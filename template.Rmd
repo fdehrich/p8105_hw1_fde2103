@@ -1,0 +1,6 @@
+---
+title: "Homework 1"
+author: Fiona Ehrich
+output: github_document
+---
+
