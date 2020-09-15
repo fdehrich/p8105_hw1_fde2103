@@ -6,6 +6,7 @@ output: github_document
 
 ```{r libraries}
 library(tidyverse)
+library(palmerpenguins)
 ```
 
 ## Problem 1
@@ -51,4 +52,40 @@ Note: The output is not shown for the above code chunk per the assignment instru
 as.numeric(pull(prob1_df, samp_gt_0)) * (pull(prob1_df, samp))
 as.factor(pull(prob1_df, samp_gt_0)) * (pull(prob1_df, samp))
 as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * (pull(prob1_df, samp))
+```
+
+## Problem 2
+
+#### Load `penguins` dataset.
+
+```{r load_peng}
+data("penguins", package = "palmerpenguins")
+```
+
+#### Description of `penguins` dataset.
+
+```{r peng_summary}
+summary(penguins)
+```
+
+The above table provides a summary of the this dataset. The data provides various types of information about penguins (species, island, bill measurements, flipper measurements, sex, and year). 
+
+```{r peng_rows_cols}
+nrow(penguins)
+ncol(penguins)
+```
+
+There are 344 rows and 8 columns.
+
+```{r peng_flip_leng_mean}
+mean(pull(penguins, flipper_length_mm), na.rm = TRUE)
+```
+
+The mean flipper length is 200.9152 mm. This is also reflected in the initial summary table.
+
+#### Generate and export scatterplot of `flipper_length mm` (y) vs `bill_length_mm` (x).
+
+```{r peng_scatterplot}
+ggplot(penguins, aes(x = pull(penguins, bill_length_mm), y = pull(penguins, flipper_length_mm), color = pull(penguins, species))) + geom_point()
+ggsave("scatter.plot.pdf", height = 4, width = 6)
 ```
