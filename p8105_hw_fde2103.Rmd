@@ -10,7 +10,7 @@ library(tidyverse)
 
 ## Problem 1
 
-Create a data frame with the specified elements.
+#### Create a data frame with the specified elements.
 
 ```{r create_df}
 prob1_df =
@@ -22,7 +22,7 @@ prob1_df =
   )
 ```
 
-Take the mean of each variable in my data frame.
+#### Take the mean of each variable in my data frame.
 
 ```{r mean_pull_var}
 mean(pull(prob1_df, samp))
@@ -33,10 +33,22 @@ mean(pull(prob1_df, factor_vec))
 
 I can take the mean of numbers and logical but not character or factor.
 
-```{r try_numeric}
+#### Apply `as.numeric` to each variable.
+
+```{r try_numeric, eval = FALSE}
 as.numeric(pull(prob1_df, samp))
 as.numeric(pull(prob1_df, samp_gt_0))
 as.numeric(pull(prob1_df, char_vec))
 as.numeric(pull(prob1_df, factor_vec))
 ```
+Note: The output is not shown for the above code chunk per the assignment instructions.
 
+`samp` stays the same as it was already numeric. `samp_gt_0` gets turned into 0s and 1s. `char_vec` just becomes a series of NAs. `factor_vec` becomes a collection of 1s, 2s, and 3s.
+
+#### Apply the three specified manipulations to the logical vector.
+
+```{r log_vec_manips}
+as.numeric(pull(prob1_df, samp_gt_0)) * (pull(prob1_df, samp))
+as.factor(pull(prob1_df, samp_gt_0)) * (pull(prob1_df, samp))
+as.numeric(as.factor(pull(prob1_df, samp_gt_0))) * (pull(prob1_df, samp))
+```
