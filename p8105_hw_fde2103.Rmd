@@ -71,7 +71,7 @@ dim(penguins)
 summary(penguins)
 ```
 
-The data provides various types of information about penguins (species, island, two types of bill measurements, two types of flipper measurements, body mass, sex, and year). There are some missing values (NA's).
+In this dataset there are 8 variables - species, island, bill length, bill depth, flipper length, body mass, sex, and year. There are some missing values (NA's).
 
 ```{r peng_rows_cols}
 nrow(penguins)
