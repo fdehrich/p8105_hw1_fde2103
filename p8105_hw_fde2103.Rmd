@@ -85,6 +85,10 @@ As indicated by the `summary(penguins)` output, there are some missing values (N
 #### Generate and export scatterplot of `flipper_length_mm` (y) vs `bill_length_mm` (x).
 
 ```{r peng_scatterplot}
-ggplot(penguins, aes(x = pull(penguins, bill_length_mm), y = pull(penguins, flipper_length_mm), color = pull(penguins, species))) + geom_point()
-ggsave("scatter.plot.pdf", height = 4, width = 6)
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) +
+  geom_point() +
+  ggtitle("Flipper Length vs Bill Length") +
+  xlab("Bill Length (mm)") +
+  ylab("Flipper Length (mm)")
+ggsave("penguin_scatter_plot.pdf", height = 4, width = 6)
 ```
